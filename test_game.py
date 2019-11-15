@@ -53,7 +53,7 @@ class GlobalTest(unittest.TestCase):
         pushing crate into hole
         falling into hole
         """
-        self.game = build_fixture("../grid")
+        self.game = build_fixture("../model/grid")
         move = "1vv2^>3>>>"
         self.game.process_input(move)
         write_fixture(str(self.game.grid))
