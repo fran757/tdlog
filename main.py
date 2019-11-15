@@ -11,10 +11,10 @@ if __name__ == "__main__":
 
     # class registration design could be used also but not today
     app_types = {"-t": Terminal, "-g": Graphic}
-    if len(sys.argv) > 0:
+    if len(sys.argv) > 1:
         flag = sys.argv[1]
         if flag not in app_types:
             raise KeyError(f"Incorrect flag: {flag}")
         AppType = app_types[flag]
 
-    Game(Grid(os.getcwd() + "/model/grid.txt"), app_type).play()
+    Game(Grid(os.getcwd() + "/model/grid.txt"), AppType).play()
