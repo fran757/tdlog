@@ -115,27 +115,3 @@ class Graphic(widgets.QWidget):
     def game_over(self):
         """Exit mainloop."""
         self.close()
-
-
-if __name__ == "__main__":
-    pass
-    # import game
-
-    # icon_map = {
-    #    " ": "empty",
-    #    "*": "crate",
-    #    "O": "deep_hole",
-    #    "o": "hole",
-    #    "@": "door",
-    #    "%": "turnstile_axis",
-    #    "/": "turnstile_block",
-    #    "#": "wall",
-    # }
-    # for i in range(1, 5):
-    #    icon_map[str(i)] = "char{}".format(i)
-
-    # observer = lambda a,b:0
-
-    # g = game.Game(game.Grid("grid.txt"))
-    # ex = App(g.grid.height, g.grid.width, icon_map, game.COMMANDS, observer)
-    # ex.draw(str(g.grid))
