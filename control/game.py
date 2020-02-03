@@ -10,6 +10,11 @@ class Game:
     def __init__(self, grid, app_type):
         self.grid = grid
         self.commands = {"^": (-1, 0), ">": (0, 1), "v": (1, 0), "<": (0, -1)}
+
+        keys = {"up": "^", "right": ">", "down": "v", "left": "<"}
+        for key, symbol in keys.items():
+            key = (f"key_{key}").upper()
+            self.commands.update({key: self.commands[symbol]})
         self.active_character = "1"
         self.app = app_type
 
@@ -43,6 +48,6 @@ class Game:
     def play(self):
         """Launch the interactive game"""
         shape = (self.grid.height, self.grid.width)
-        self.app = self.app(shape, self.commands, self.callback)
+        self.app = self.app(self.callback, shape, self.commands)
         self.app.update(str(self.grid), self.active_character)
         self.app.launch()

@@ -1,3 +1,0 @@
-python3 main.py $@
-find . -name "*pyc" -delete
-find -name "__pycache__" -prune -exec rm -r {} \;
