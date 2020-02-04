@@ -1,6 +1,9 @@
 """Interactive applications for command line or GUI gameplay."""
 
+from .apps import App
 
+
+@App.register("t")
 class Basic:
     """Command line gameplay."""
 

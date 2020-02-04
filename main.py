@@ -5,17 +5,19 @@ import os
 import sys
 from control import Game
 from model import Grid
-from view import Graphic, Basic, Keyboard
+from view import App
+
+
+def main():
+    try:
+        key = sys.argv[1].split("-", 1)[1]
+    except:
+        key = "c"
+
+    path = os.getcwd() + "/model/grid.txt"
+
+    Game(Grid(path), App(key)).play()
+
 
 if __name__ == "__main__":
-    AppType = Graphic  # default value for now
-
-    # class registration design could be used also but not today
-    app_types = {"-t": Basic, "-g": Graphic, "-k": Keyboard}
-    if len(sys.argv) > 1:
-        flag = sys.argv[1]
-        if flag not in app_types:
-            raise KeyError(f"Incorrect flag: {flag}")
-        AppType = app_types[flag]
-
-    Game(Grid(os.getcwd() + "/model/grid.txt"), AppType).play()
+    main()

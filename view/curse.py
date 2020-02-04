@@ -1,8 +1,13 @@
 import curses
 
+from .apps import App
 
+
+@App.register("c")
 class Keyboard:
     def __init__(self, observer, *a):
+        self.keys = {"up": "^", "right": ">", "down": "v", "left": "<"}
+
         self.observer = observer
         self.buffer = None
         self._over = False
@@ -16,10 +21,19 @@ class Keyboard:
         self._buffer = grid
         self._draw()
 
+    def getkey(self):
+        key = self.stdscr.getkey()
+        try:
+            key = self.keys[key.lower().split("key_")[1]]
+        except (KeyError, IndexError):
+            pass
+        return key
+
+
     def launch(self):
         try:
             while not self._over:
-                self.observer(self.stdscr.getkey())()
+                self.observer(self.getkey())()
                 self.stdscr.refresh()
                 self._draw()
         finally:

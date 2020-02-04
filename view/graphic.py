@@ -5,7 +5,10 @@ import numpy as np
 import PyQt5.QtWidgets as widgets
 import PyQt5.QtGui as gui
 
+from .apps import App
 
+
+@App.register("g")
 class Graphic(widgets.QWidget):
     """GUI gameplay with PyQt"""
 
