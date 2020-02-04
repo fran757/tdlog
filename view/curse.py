@@ -17,6 +17,9 @@ class Keyboard:
         curses.cbreak()
         self.stdscr.keypad(True)
 
+    def __del__(self):
+        self._clean()
+
     def update(self, grid, _):
         self._buffer = grid
         self._draw()
